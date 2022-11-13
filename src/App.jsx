@@ -12,10 +12,14 @@ function App() {
   }
 
   const addTodo = () => {
-    if (todoText == "") return;
-    const newTodos = [...incompleteTodos, todoText]
-    setIncompleteTodos(newTodos)
-    setTodoText('')
+    if (todoText.length > 2) {
+      if (todoText == "" ) return;
+      const newTodos = [...incompleteTodos, todoText]
+      setIncompleteTodos(newTodos)
+      setTodoText('')
+    } else {
+      alert("本当にtodoですか？")
+    }
   }
 
   const deleteTodo = (index) => {
