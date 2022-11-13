@@ -6,6 +6,10 @@ import { CompleteTodo } from './components/CompleteTodo'
 
 function App() {
 
+  let todoItems = []
+  let storage = localStorage
+
+
   const [todoText, setTodoText] = useState("")
   const onChangeTodoText = (e) => {
     setTodoText(e.target.value)
@@ -15,6 +19,8 @@ function App() {
     if (todoText.length > 2) {
       if (todoText == "" ) return;
       const newTodos = [...incompleteTodos, todoText]
+      todoItems.push(newTodos)
+      storage.store = JSON.stringify(todoItems);
       setIncompleteTodos(newTodos)
       setTodoText('')
     } else {
